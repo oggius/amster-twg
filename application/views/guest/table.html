@@ -1,0 +1,11 @@
+<div class="recordsTable">
+    {% for record in records %}
+        <div class="guestrecord">
+            <p class="text guestname">
+                <span class="colored">{{ record.username }}</span>&nbsp;
+                <span class="timestamp">({{ record.time }})&nbsp;написал(а):</span>
+            </p>
+            <p class="text guestmessage">{{ record.text|raw }}</p>
+        </div>
+    {% endfor %}
+</div>

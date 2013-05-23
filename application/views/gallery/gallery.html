@@ -1,0 +1,21 @@
+<div id="{{ galleryId }}" class="photoGallery">
+    {% if videos|length > 0 %}
+		{% for video in videos %}
+            <a href="{{ video.view_code }}"><img src="/userfiles/gallery/videothumbs/youtube-play-video.jpg" /></a>
+        {% endfor %}
+    {% endif %}
+	{% for key,photo in photos %}
+        <a href="{{ photo.src }}">
+            <img 
+                src="{{ photo.src_thmb }}",
+                data-big="{{ photo.src }}"
+                data-title="{{ photo.title }}"
+                data-description="{{ photo.description|raw }}"
+                >
+        </a>                
+    {% endfor %}           
+</div>
+<script>
+Galleria.loadTheme('/theme/ext/galleria/themes/classic/galleria.classic.min.js');
+Galleria.run('#{{ galleryId }}');
+</script>

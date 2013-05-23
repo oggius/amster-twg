@@ -1,0 +1,40 @@
+{% extends "layout_page_1col.html" %}
+{% block page_content %}
+<div>
+    <div class="content_heading">
+        <div>
+            <div id="vk_like"></div>
+            <script type="text/javascript">
+            VK.Widgets.Like("vk_like", {type: "mini", height: 20} );
+            </script>
+            <g:plusone size="medium"></g:plusone>
+            <div class="fb-like" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial"></div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="AmsterdamCover" data-lang="ru" data-text="Расписание ближайших концертов кавер-группы AmsterDam">Твит</a>
+        </div>
+        <h1>Предстоящие концерты</h1>
+    </div>
+    <div class="single_col_content">
+        <p class="text">Приглашаем всех ознакомиться с расписанием ближайших концертов кавер группы Amsterdmam в ресторанах и пабах Киева и Украины. Живая музыка на корпоративе, свадьбе или банкете в нашем исполнении в данном разделе не анонсируется, так как такие мероприятия имеют в большинстве своём закрытый характер.</p>
+        <p class="text">Друзья, если вы побывали на одном из наших концертов и у вас есть эмоции или критика, которыми вы хотели бы поделиться, приглашаем вас в нашу <a href="/guest.html">Гостевую книгу</a>, где вы можете свободно высказаться о творчестве нашей группы. Будем рады любым мнениям и отзывам!</p>
+        <div class="content_list" style="margin-top: 20px">
+            {% for concert in concerts %}
+                <div class="concert" id="concert{{ concert.id }}">
+                    <p class="heading">{{ concert.name|e }}</p>
+                    <div class="concertContent">
+                        <img src="/userfiles/places/{{ concert.place_image }}" alt="Афиша {{ concert.name }}" width="100"/>
+
+                        <div class="concertText">
+                            <p class="text">{{ concert.description|raw}}</p>
+                            <p class="text">Место:&nbsp;<span class="colored">{{ concert.place_name|raw }}</span>&nbsp;&nbsp;({{ concert.address }})</p>
+                            {% import "_macros/dateformat.html" as dateformat %}
+                            <p class="text">Время:&nbsp;<span class="colored">{{ dateformat.concertTime(concert.time, months) }}</span></p>
+                            <div class="shareBlock">
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

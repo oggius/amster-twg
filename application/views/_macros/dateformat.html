@@ -1,0 +1,3 @@
+{% macro concertTime(datestring, months) %}
+    {{ datestring|date("d") }} {{ months[datestring|date("m")]}} в {{ datestring|date("H:i") }}
+{% endmacro %}

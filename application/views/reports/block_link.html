@@ -1,0 +1,12 @@
+<div class="report_content">
+    <h2><a class="link-no-underline" href="/reports/{{ report.alias }}.html">{{ report.name }}</a></h2>
+    <div class="text">
+        {{ report.description | raw }}
+    </div>	
+    {{ gallery | raw }}
+    <p class="more">
+        <a class="colored" href="/reports/{{ report.alias }}.html">
+            {{ gallery is not empty ? 'Посмотреть остальные фото/видео' : 'Посмотреть полный отчет' }}
+        </a>
+    </p>
+</div>
